@@ -1,39 +1,25 @@
-% Copyright 2004 by Till Tantau <tantau@users.sourceforge.net>.
-%
-% In principle, this file can be redistributed and/or modified under
-% the terms of the GNU Public License, version 2.
-%
-% However, this file is supposed to be a template to be modified
-% for your own needs. For this reason, if you use this file as a
-% template and not specifically distribute it as part of a another
-% package/program, I grant the extra permission to freely copy and
-% modify this file as you see fit and even to delete this copyright
-% notice. 
 
-\documentclass{beamer}
-\setbeamertemplate{footline}{% 
-  \hfill% 
-  \usebeamercolor[fg]{page number in head/foot}% 
-  \usebeamerfont{page number in head/foot}% 
-  \insertframenumber%
-  %\,/\,\inserttotalframenumber
-  \kern1em\vskip2pt% 
-}
+\documentclass[10pt,usenames,dvipsnames]{beamer}
 
-%\usepackage{aaai18}  %Required
-%\usepackage{times}  %Required
-%\usepackage{helvet}  %Required
-%\usepackage{courier}  %Required
-%\usepackage{url}  %Required
-\usepackage{graphicx}  %Required
-\usepackage{textcomp}
+\usetheme[progressbar=frametitle]{metropolis}
+\usepackage{appendixnumberbeamer}
 
+\usepackage{ulem}
+\usepackage{pgfpages}
+%\setbeamertemplate{note page}[plain]
+%\setbeameroption{show notes on second screen=right}
+
+\usepackage{booktabs}
+\usepackage[scale=2]{ccicons}
+\usepackage{todonotes}
 \usepackage{amsmath} %added
 \usepackage{bm}%added
 %\usepackage{algorithm,algpseudocode}
 \usepackage[]{algorithm2e}
-\usepackage{graphicx}
-\usepackage[lofdepth,lotdepth]{subfig}
+
+\usepackage{subfig}
+\usepackage{pgfplots}
+\usepgfplotslibrary{dateplot}
 
 \usepackage{tikz}%added
 \usetikzlibrary{shapes,arrows}
@@ -46,91 +32,17 @@
 \usepackage{wasysym}
 %\usepackage{subcaption}
 
-%\setbeamertemplate{footline}[frame number]
 
-% There are many different themes available for Beamer. A comprehensive
-% list with examples is given here:
-% http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
-% You can uncomment the themes below if you would like to use a different
-% one:
-%\usetheme{AnnArbor}
-%\usetheme{Antibes}
-%\usetheme{Bergen}
-%\usetheme{Berkeley}
-%\usetheme{Berlin}
-%\usetheme{Boadilla}
-%\usetheme{boxes}
-%\usetheme{CambridgeUS}
-%\usetheme{Copenhagen}
-%\usetheme{Darmstadt}
-\usetheme{default}
-%\usetheme{Frankfurt}
-%\usetheme{Goettingen}
-%\usetheme{Hannover}
-%\usetheme{Ilmenau}
-%\usetheme{JuanLesPins}
-%\usetheme{Luebeck}
-%\usetheme{Madrid}
-%\usetheme{Malmoe}
-%\usetheme{Marburg}
-%\usetheme{Montpellier}
-%\usetheme{PaloAlto}
-%\usetheme{Pittsburgh}
-%\usetheme{Rochester}
-%\usetheme{Singapore}
-%\usetheme{Szeged}
-%\usetheme{Warsaw}
+\usepackage{xspace}
+\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
 
-
-
-
-\title{Novel Exploration Techniques (NETs) for Malaria Policy Interventions}
-
-% A subtitle is optional and this may be deleted
-%\subtitle{Submission to IAAI 2018}
-
-\author{O.~Bent\inst{1} \inst{2},  S.~L.~Remy\inst{2}, S.~Roberts\inst{1}, A.~Walcott\inst{2}}% \and S.~Another\inst{2}}
-% - Give the names in the same order as the appear in the paper.
-% - Use the \inst{?} command only if the authors have different
-%   affiliation.
-
-\institute[Universities of Somewhere and Elsewhere] % (optional, but mostly needed)
-{
-  \inst{1}%
-  Department of Engineering Science\\
-  University of Oxford
-  \and
-  \inst{2}%
-  IBM Research Africa\\
-  Nairobi, Kenya}
-% - Use the \inst command only if there are several affiliations.
-% - Keep it simple, no one is interested in your street address.
-
-\date{Reference Deck}
-% - Either use conference name or its abbreviation.
-% - Not really informative to the audience, more for people (including
-%   yourself) who are reading the slides online
-
-\subject{Applications of Artificial Intelligence}
-% This is only inserted into the PDF information catalog. Can be left
-% out. 
-
-% If you have a file called "university-logo-filename.xxx", where xxx
-% is a graphic format that can be processed by latex or pdflatex,
-% resp., then you can add a logo as follows:
-
-% \pgfdeclareimage[height=0.5cm]{university-logo}{university-logo-filename}
-% \logo{\pgfuseimage{university-logo}}
-
-% Delete this, if you do not want the table of contents to pop up at
-% the beginning of each subsection:
-\AtBeginSubsection[]
-{
-  \begin{frame}<beamer>{Outline}
-    \tableofcontents[currentsection,currentsubsection]
-  \end{frame}
-}
-
+\title{Practical Session 2:}
+\subtitle{Learning from Simulation for Malaria Control}
+% \date{\today}
+\date{}
+\author{Presented by Sekou L. Remy}
+\institute{Policy Making with AI, IBM Research$|$Africa}
+% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
 % Let's get started
 \begin{document}
 
@@ -139,12 +51,15 @@
 \end{frame}
 
 \begin{frame}{Outline}
-  \tableofcontents
+
+\setbeamertemplate{section in toc}[sections numbered]
+\tableofcontents[hideallsubsections]
   % You might wish to add the option [pausesections]
 \end{frame}
 
 % Section and subsections will appear in the presentation overview
 % and table of contents.
+
 \section{Malaria Policy Decisions}
 
 \subsection{Problem}
@@ -262,7 +177,7 @@
 
 % You can reveal the parts of a slide one at a time
 % with the \pause command:
-\begin{frame}{OpenMalaria Simulation Overview}
+\begin{frame}{Simulation and Modeling Overview}
 
 
 \begin{itemize}
@@ -287,67 +202,35 @@
 % with the \pause command:
 
 \begin{frame}{Example Stochastic Simulation in Human Populations}
-
-\centering
-\includegraphics[width=1\textwidth]{images/Humans.png}
+\hspace{1cm}
+\centering{\includegraphics[width=1\textwidth]{images/Humans.png}}
  
-\begin{itemize}
-\item \cite{Stuckey2012}
-\end{itemize}
+
+\cite{Stuckey2012}
+
 
 \end{frame}
 
 \begin{frame}{Example Deterministic Models for Vector Control}
-
+\hspace{1cm}
 \centering
-\includegraphics[width=1\textwidth]{images/MosquitoLifeCycle.png}
+\includegraphics[width=.9\textwidth]{images/MosquitoLifeCycle.png}
 
 
 \end{frame}
 
-\begin{frame}{Example Site Specific Model Parameterisation}
 
+\begin{frame}{Example Evaluation of 5 policies}
+\hspace{1cm}
 
-         \centering        
-        \includegraphics[width=1\textwidth]{images/Sensitivity.png} 
-        
-\begin{itemize}
-\item \cite{Stuckey2012}
-\end{itemize}
+\centering{\includegraphics[width=.8\textwidth]{images/HealthPolicy.png}}
 
-\end{frame}
-
-\begin{frame}{Example Human Cost Effectiveness analysis of 5 policies}
-
-
-\centering
-         \includegraphics[width=1\textwidth]{images/HealthPolicy.png}
-\begin{itemize}
-\item \cite{Stuckey2014}
-\end{itemize}
+\cite{Stuckey2014}
 
 \end{frame}
 
 \subsection{Novel Solution?}
 
-\begin{frame}{Challenging Status Quo of OpenMalaria use}
-
-\begin{itemize}
-\item Requires deep knowledge of the tool to set-up simulations
-\item Human researchers only able to explore a handful of policies, mainly due to:
-
-	\begin{itemize}
-	\item Time required to create an experiment (PhD?)
-	\item Time to run the expensive simulation computation (days)
-	\item Time to analyse results (excel, R, python?)
-	\end{itemize}
-
-\item This means exploration is guided by Human intuition.
-\item \textit{But can machines do better?}
-\end{itemize}
-
-
-\end{frame}
 %\subsection{Complete Problem Formulation}
 
 % You can reveal the parts of a slide one at a time
@@ -356,8 +239,7 @@
 
 \begin{itemize}
 \item Proposing a novel formulation for the exploration of malaria intervention actions, for Rachuonyo South District - Kenya 
-\item Multiple agents used to determine the optimal malaria intervention policy for Rachuonyo South
-\item Agents learn from the formulation of this problem in the Reinforcement Learning paradigm
+\item You implement algorithms which learn from this problem formulation in the Reinforcement Learning paradigm
 \end{itemize}
 \centering
          \includegraphics[width=7cm]{images/WesternKenya.png} 
@@ -365,7 +247,7 @@
 
 
 
-\section{AI Approaches for Policy Decisions}
+\section{Problem Formulation}
 
 \subsection{Stochastic Multi-Armed Bandit}
 \begin{frame}{Stochastic Multi-Armed Bandit (MAB)}
@@ -450,7 +332,7 @@
 \begin{frame}{Action}
 
 \begin{itemize}
-\item Mass-distribution of long-lasting insecticide-treated nets ($a_{ITN} \in (0,1]$)
+\item Mass-distribution of insecticide-treated nets ($a_{ITN} \in (0,1]$)
 \item Seasonal Indoor Residual Spraying with pyrethroids ($a_{IRS}\in (0,1]$)
 \item Prompt and effective treatment of malaria  \cite{Stuckey2014}
 \end{itemize}
@@ -534,7 +416,7 @@
 
 \begin{itemize}
 \item $R_\theta(\bm{a}_i)$ is stochastic through the parameterisation of the simulation $\theta$
-\item $\theta$ generates a randomised distribution of parameters for the OpenMalaria simulation. 
+\item $\theta$ defines a randomised distribution of parameters for the simulation.
 \item The magnitude of the reward has been determined through an economic cost-effectiveness analysis of the simulation output
 \end{itemize}
 
@@ -570,51 +452,13 @@
 
 %\subsubsection{DALYs}
 
-\begin{frame}{Disability Adjusted Life Years (DALYs)}
-\begin{itemize}
-
-\item Defined by the total years of life lost (YLL) due to fatality linked with contraction of the disease, and number of years of life with disability (YLD) as a result of the disease \cite{Murray1996}
-\end{itemize}
-
-\begin{align}
-DALY &= YLL + YLD \label{eq:daly}\\
-YLD &=  \sum_{j=0}^M \tt{Duration}(ME_j)*\tt{Weight}(\tt{Age}(ME_j))\label{eq:yld}\\
-YLL_i &=  \mbox{max}(0,\tt{LifeExpectancy} - \tt{Age}(D_i)))\label{eq:ylli}\\
-YLL &=  \sum_{i=0}^N YLL_i \times \gamma^{YLL_i} \label{eq:yll}\
-\end{align}
-
-We also use a discount factor $\gamma = 0.97$ to discount the value of future years of life lost, and a life expectancy of 46.6 years \cite{network2004indepth}.
-
-
-
-\end{frame}
-
-
-%\subsubsection{Costs}
-
-\begin{frame}{Costs}
-
-Two types of costs:
-
-\begin{itemize}
-\item Cost to treat and manage malaria episodes, healthcare system costs (HSC)
-\begin{align}
-	TTC &=  \sum_{j=0}^M \tt{Cost}(\tt{Treatment}(\tt{InHospital}(ME_j))) \label{ttc}\\
-	TRC &=  \sum_{j=0}^M \tt{Cost}(\tt{Recovery}(\tt{InHospital}(ME_j)))\label{trc}\\
-	HSC&= TTC + TRC + \tt{Cost}(\tt{InHospital}(D))\label{total}
-\end{align}
-\item Cost to implement interventions which minimise malaria prevalence, intervention costs ($C_{int}$).
-\item For Rachuonyo South district it costs 8.52USD per net and 0.73USD per person covered by spraying intervention \cite{Stuckey2014}
-\end{itemize}
-\end{frame}
-
 
 %\subsubsection{Cost Effectiveness}
 
 \begin{frame}{Cost Effectiveness of Interventions}
 
 \begin{itemize}
-\item The Agent proposed will receive rewards based on the \textit{cost effectiveness} of a policy, this is a metric often used by researchers evaluating the impact of policy decisions
+\item The proposed algorithm will receive rewards based on the \textit{cost effectiveness} of a policy, this metric is one of many used by researchers evaluating the impact of policy decisions
 \item  Cost effectiveness will be evaluated as the cost per DALY averted $C_{DA}$
 \end{itemize}
 
@@ -635,11 +479,8 @@ C_{DA} =\dfrac{C_{\mbox{int}} + HSC_{\mbox{int}}-HSC_{\mbox{no~int}}}{DALYs_{int
 	\begin{itemize}
 	\item Researchers assess this as most cost-effective policy
 	\end{itemize}
-\item Human recommended policy $\{0.8,0.9\}$
-	\begin{itemize}
-	\item Researchers assess this as having the best health-outcomes
-	\end{itemize}
-\item \textit{If we train an Agent directly on the OpenMalaria Environment what can we learn for Rachuonyo South?}
+\item[ ]
+\item \textit{If we train an algorithm directly on the simulation environment what can we learn about Rachuonyo South?}
 \end{itemize}
 \centering
          \includegraphics[width=7cm]{images/WesternKenya.png} 
@@ -680,28 +521,15 @@ C_{DA} =\dfrac{C_{\mbox{int}} + HSC_{\mbox{int}}-HSC_{\mbox{no~int}}}{DALYs_{int
 \centering
 \includegraphics[width=1\textheight]{images/Batch_7.png}
 \end{frame}
-\begin{frame}{Example Results and Comparison Rachuonyo South}{Gaussian Processes for Sample-Efficiency and Inference}
-\centering
-\includegraphics[width=1\textheight]{images/UpdateOverview.png}
-\end{frame}
+
 
 
 \subsection{System Implementation and Deployment}
-\begin{frame}{System Implementation and Deployment}
-
-\begin{itemize}
-\item For this work we used OpenMalaria commit  a50730b
-\item 4 node cluster of machines, each with 64 hyper threaded cores (2.20GHz Intel Xeon\textregistered  \ CPU E5-2660)
-\item On these processors, running one instance of an OpenMalaria simulation, for a representative simulated human population size, returns results in the time-frame of hours.
-\item Parallelism was implemented using Python's \textit{multiprocessing} package.
-This package supports spawning processes using an API, and was used to execute OpenMalaria simulations
-\end{itemize}
-\end{frame}
 
 \subsection{Agent Models}
 \begin{frame}{Agent Models}
 \begin{itemize}
-\item Each agent performs sequential batch exploration, towards optimisation of an unknown stochastic reward function $R$
+\item Each algorithm performs sequential batch exploration, with the goal of optimisation of an unknown stochastic reward function $R$
 \item At each batch we will choose $j=1,2,..,B$ policies $\bm{a}_i^j \in A$. Due to the computational expense of calculating $R(\bm{a}_i)$ and the size of the entire $A$, we wish to find solutions of maximal reward in as few iterations $i$ as possible
 \item The goal being to approximate $\bm{a}^* = \mbox{argmax}_{\bm{a} \in A}R(\bm{a})$ without prohibitively expensive computation for all possible policies, therefore using a subset $A_c \in A$ of the policy space.
 
@@ -736,64 +564,19 @@ This package supports spawning processes using an API, and was used to execute O
 
 \end{frame}
 
-\begin{frame}{Different Exploration Mechanisms}
-\begin{itemize}
-\item ULCB
-\begin{itemize}
-	\item Novel Bandit Algorithm using Gaussian Processes
-	\item $\bm{a}_i^j = \underset{a \in A_c}{\mbox{argmax}} \ \mu_{i-1}(\bm{a}) + \beta\sigma_{i-1}(\bm{a})$
-	\item $\bm{a}_i^j = \underset{a \in A_c}{\mbox{argmin}} \ \mu_{i-1}(\bm{a}) - \beta\sigma_{i-1}(\bm{a})$
-\end{itemize}
-\item Genetic Algorithm
+\begin{frame}{One Example of an Exploration Mechanism}
+Genetic Algorithm
 \begin{itemize}
 	\item Meta-heuristic inspired by evolutionary strategies
 	\item $p^j = \frac{f^j}{\sum_{k=1}^{B} f^k}$
 \end{itemize}
-\item Batch Policy Gradient
-\begin{itemize}
-	\item $\epsilon$-greedy
-	\item $\bm{a}^j = \underset{w \sim A_c}{\tt{argmax}}(\bm{w}) $
-\end{itemize}
-
-\end{itemize}
-  
+\includegraphics[width=.7\textheight, trim={0 1.8cm 1.5cm 0}, clip=True]{images/Batch_7.png}
 
 \end{frame}
 
 
 
-
-\section*{Current/Future Work and Motivations}
-
-\begin{frame}{Current/Future Work and Motivations}
-  \begin{itemize}
-  \item
-    Growing the Policy Space
-    \begin{itemize}
-    \item Interventions in time
-    \item More and perhaps experimental Interventions (laviciding, vaccination etc.)
-    \end{itemize}
-  \item
-   	Learning spatial distribution of interventions MAPs project
-  \item
-    Motivation: create policies which are sensitive to the observed challenges and have the goal of prevented transmission of malaria
-  \end{itemize}
-  
-  \begin{itemize}
-  \item
-    Next steps
-    \begin{itemize}
-    \item
-      A tool for decision makers
-    \item
-      Multiple scenarios
-    \item
-    	Larger Action space
-    	\item
-    	More Agents, with other simulations and real data
-    \end{itemize}
-  \end{itemize}
-\end{frame}
+\section{An Example Notebook}
 
 
 
@@ -925,5 +708,3 @@ While a random policy will be sampled with probability $1-\epsilon$.
 
 
 \end{document}
-
-
